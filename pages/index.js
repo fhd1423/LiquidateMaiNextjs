@@ -70,7 +70,6 @@ export async function getServerSideProps() {
   vaults = vaults.filter(vault => vault.cost > 0.01)
 
   console.log('Vaults: ', vaults)
-
   return (
     {
       props: {
