@@ -32,6 +32,7 @@ export default function Home({ vaults }) {
     const [click, setClick] = useState(false)
     let [nvaults, setVaults] = useState(vaults)
     let [name, setName] = useState('WETH')
+    let [numVaults, setNumVaults] = useState(vaults.length)
     async function handleClick(token) {
         setClick(true)
         setName(token[0])
@@ -59,6 +60,7 @@ export default function Home({ vaults }) {
         });
         console.log(vaults)
         setVaults(vaults)
+        setNumVaults(vaults.length)
     }
 
     return (
@@ -69,7 +71,8 @@ export default function Home({ vaults }) {
                 )}
             </div>
             <div className='grid grid-flow-row-dense grid-cols-5 grid-row-1 gap-2 fixed w-full top-30 h-full bg-gray-500'>
-                {nvaults?.map((vault) => (
+                {numVaults < 1 && (<div className = 'font-bold justify-center'> There are no undercollateralized vaults available for the selected token, try another instead! </div>)}
+                {nvaults?.map((vault) => 
                     <button key = 'overall.vaults' className='hover:scale-110 hover:bg-shadow-2xl mt-2 ml-2 border-2 border-black h-64 w-70 bg-slate-600 hover:bg-red-500 rounded-3xl'>
                         <ul>
                             <div className='text-black' key={'vault.type'}> Vault Type: <h1> {name}</h1> </div>
@@ -78,7 +81,8 @@ export default function Home({ vaults }) {
                             <div className='text-black' key={'vault'}> Potential Profit: <h1 className='text-green-600'> ${((Math.floor(10 * vault.cost)) / 100)} </h1></div>
                         </ul>
                     </button>
-                ))}
+                ) 
+                }
             </div>
         </div>
     );
