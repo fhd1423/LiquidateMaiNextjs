@@ -5,32 +5,22 @@ import { AiOutlineMenu, AiOutlineClose } from 'react-icons/ai'
 const Navbar = () => {
     return (
         <div className='fixed w-full h-20 shadow-xl z-[100]'>
-            <div className='flex justify-end items-center w-full h-full px-2 2xl:px-16 '>
+            <div className='flex justify-evenly items-center w-full h-full px-10 2xl:px-25 '>
                 <div>
                     <ul className='hidden md:flex'>
                         <Link href='/'>
-                            <li className='ml-10 text-sm uppercase hover:border-b'>  Home </li>
+                            <li className='rounded-full py-1 px-3 ml-20 mr-20 text-sm uppercase border-2 border-gray-500 hover:border-white hover:bg-gray-500 hover:text-white hover:scale-125'>  About </li>
                         </Link>
                         <Link href='/'>
-                            <li className='ml-10 text-sm uppercase hover:border-b'>  About </li>
+                            <li className='rounded-full py-1 px-3 ml-20 mr-20 text-sm uppercase border-2 border-gray-500 hover:border-white hover:bg-gray-500 hover:text-white hover:scale-125'>  Vaults </li>
                         </Link>
                         <Link href='/'>
-                            <li className='ml-10 text-sm uppercase hover:border-b'>  Support </li>
-                        </Link>
-                        <Link href='/'>
-                            <li className='ml-10 text-sm uppercase hover:border-b pr-10'>  FAQ </li>
+                            <li className='rounded-full py-1 px-3 ml-20 mr-20 text-sm uppercase border-2 border-gray-500 hover:border-white hover:bg-gray-500 hover:text-white hover:scale-125'>  Claim </li>
                         </Link>
                     </ul>
-                    <div className='md:hidden'>
-                        <AiOutlineMenu size={25} />
-                    </div>
                 </div>
             </div>
-            <div className='fixed left-0 top-0 w-full h-screen bg-black/70'>
-                <div className = 'fixed left-0 top-0 w-[75%] sm:w-[60%] md:w-[45%] h-screen bg-[#ecf0f3] p-10 ease-in duration-500'>
-
-                </div>
-            </div>
+            
 
         </div>
     )
