@@ -70,7 +70,7 @@ export default function Home({ vaults }) {
                     {token[0]} </button>
                 )}
             </div>
-            <div className='grid grid-flow-row-dense grid-cols-5 grid-row-1 gap-2 fixed w-full top-30 h-full bg-gray-500'>
+            <div className='grid grid-flow-row-dense grid-cols-5 grid-row-1 gap-2 fixed w-full top-30 h-full bg-gray-500 overflow-auto'>
                 {numVaults < 1 && (<div className = 'font-bold justify-center'> There are no undercollateralized vaults available for the selected token, try another instead! </div>)}
                 {nvaults?.map((vault) => 
                     <button key = 'overall.vaults' className='hover:scale-110 hover:bg-shadow-2xl mt-2 ml-2 border-2 border-black h-64 w-70 bg-slate-600 hover:bg-red-500 rounded-3xl'>
