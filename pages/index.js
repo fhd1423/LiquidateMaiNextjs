@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Navbar from '../components/Navbar.jsx'
 import Vaults from "../components/vaults"
+import Landing from "../components/Landing"
 import web2 from 'web3'
 import React, { useState } from 'react'
 import Link from 'next/link.js'
@@ -45,6 +46,7 @@ export default function Home({ WETH_VAULT }) {
       </Head>
       <div>
         {<Vaults vaults={WETH_VAULT} />}
+       
       </div>
     </div>
 

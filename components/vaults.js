@@ -31,8 +31,10 @@ let tokens =
 export default function Home({ vaults }) {
     const [click, setClick] = useState(false)
     let [nvaults, setVaults] = useState(vaults)
+    let [name, setName] = useState('WETH')
     async function handleClick(token) {
         setClick(true)
+        setName(token[0])
         let tokenAddress = token[1]
         console.log('token address: ', tokenAddress)
         const VAULT_CONTRACT = new web3.eth.Contract(JSON.parse(abi), tokenAddress)
@@ -70,6 +72,7 @@ export default function Home({ vaults }) {
                 {nvaults?.map((vault) => (
                     <button key = 'overall.vaults' className='hover:scale-110 hover:bg-shadow-2xl mt-2 ml-2 border-2 border-black h-64 w-70 bg-slate-600 hover:bg-red-500 rounded-3xl'>
                         <ul>
+                            <div className='text-black' key={'vault.type'}> Vault Type: <h1> {name}</h1> </div>
                             <div className='text-black' key={'vault.index'}> Vault ID: <h1> {vault.index}</h1> </div>
                             <div className='text-black' key={'vault.cost'}> Vault Cost: <h1 className='text-red-700'> ${(Math.floor(100 * vault.cost)) / 100}</h1></div>
                             <div className='text-black' key={'vault'}> Potential Profit: <h1 className='text-green-600'> ${((Math.floor(10 * vault.cost)) / 100)} </h1></div>
