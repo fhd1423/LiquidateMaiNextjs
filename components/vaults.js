@@ -30,7 +30,7 @@ let tokens =
 
 export default function Home({ vaults }) {
     const [click, setClick] = useState(false)
-    const [nvaults, setVaults] = useState(null)
+    let [nvaults, setVaults] = useState(vaults)
     async function handleClick(token) {
         setClick(true)
         let tokenAddress = token[1]
