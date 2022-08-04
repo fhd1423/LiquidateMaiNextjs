@@ -52,6 +52,9 @@ export default function Home({ vaults }) {
             vaults[i].index = i
         }
         vaults = vaults.filter(vault => vault.cost > 0.01)
+        vaults.sort(function (a, b) {
+            return b.cost - a.cost;
+        });
         console.log(vaults)
         setVaults(vaults)
     }
