@@ -29,6 +29,7 @@ let tokens =
 ]
 
 export default function Home({ vaults }) {
+    const [viewVault, setViewVault] = useState(1)
     const [click, setClick] = useState(false)
     let [nvaults, setVaults] = useState(vaults)
     let [name, setName] = useState('WETH')
@@ -64,16 +65,17 @@ export default function Home({ vaults }) {
     }
 
     return (
-        <div className='w-full top-0 h-25  bg-red-400'>
-            <div className='grid grid-flow-row-dense grid-cols-7 grid-rows-1'>
-                {tokens.map((token) => <button key = 'token.names' onClick={() => handleClick(token)} className='font-bold rounded-lg p-1 m-2 text-sm uppercase border-2 border-black hover:border-white hover:bg-blue-900 hover:text-white'>
+        <div className='w-full top-40 h-25  bg-gray-500'>
+            <button className = 'hover:border-white ml-10 rounded-md border-2 border-black p-2 underline-offset-1' onClick={() => setViewVault(viewVault + 1)}> Select Vault Type </button>
+            {viewVault%2 == 0 ? <div className='grid grid-flow-row-dense grid-cols-7 grid-rows-1'>
+                {tokens.map((token) => <button key = 'token.names' onClick={() => handleClick(token)} className='font-bold rounded-lg p-1 m-2 text-sm uppercase border-2 border-black hover:border-white hover:text-white'>
                     {token[0]} </button>
                 )}
-            </div>
-            <div className='grid grid-flow-row-dense grid-cols-5 grid-row-1 gap-2 fixed w-full top-30 h-full bg-gray-500 overflow-auto'>
+            </div> : <div> </div>}
+            <div className='grid grid-flow-row-dense grid-cols-5 grid-row-1 gap-2 fixed w-full top-30 h-full bg-[#15181D] overflow-auto'>
                 {numVaults < 1 && (<div className = 'font-bold justify-center'> There are no undercollateralized vaults available for the selected token, try another instead! </div>)}
                 {nvaults?.map((vault) => 
-                    <button key = 'overall.vaults' className='hover:scale-110 hover:bg-shadow-2xl mt-2 ml-2 border-2 border-black h-64 w-70 bg-slate-600 hover:bg-red-500 rounded-3xl'>
+                    <button key = 'overall.vaults' className='hover:scale-110 hover:bg-shadow-2xl mt-2 ml-2 border-2 border-black h-64 w-70 bg-[#33363c] hover:bg-red-500 rounded-3xl'>
                         <ul>
                             <div className='text-black' key={'vault.type'}> Vault Type: <h1> {name}</h1> </div>
                             <div className='text-black' key={'vault.index'}> Vault ID: <h1> {vault.index}</h1> </div>
