@@ -30,13 +30,16 @@ let tokens =
 
 export default function Home({ vaults }) {
     const [viewVault, setViewVault] = useState(1)
-    const [click, setClick] = useState(false)
+    const [loading, setLoading] = useState(false) //
     let [nvaults, setVaults] = useState(vaults)
     let [name, setName] = useState('WETH')
+    let [start, setStart] = useState(true)
     let [numVaults, setNumVaults] = useState(vaults.length)
+
     async function handleClick(token) {
-        setClick(true)
+        setStart(false)
         setName(token[0])
+        setLoading(true)
         let tokenAddress = token[1]
         console.log('token address: ', tokenAddress)
         const VAULT_CONTRACT = new web3.eth.Contract(JSON.parse(abi), tokenAddress)
@@ -62,6 +65,7 @@ export default function Home({ vaults }) {
         console.log(vaults)
         setVaults(vaults)
         setNumVaults(vaults.length)
+        setLoading(false)
     }
 
     return (
@@ -72,8 +76,9 @@ export default function Home({ vaults }) {
                     {token[0]} </button>
                 )}
             </div> : <div> </div>}
+            
             <div className='grid grid-flow-row-dense grid-cols-5 grid-row-1 gap-2 fixed w-full top-30 h-full bg-[#15181D] overflow-auto'>
-                {numVaults < 1 && (<div className = 'text-white font-bold justify-center'> There are no vaults below the collateralization ratio for the selected token, try another instead! </div>)}
+                {numVaults < 1 && !loading ? (<div className = 'text-white font-bold justify-center'> There are no vaults below the collateralization ratio for the selected token, try another instead! </div>) : <div className = { (numVaults > 0 || start ? 'hidden' : 'text-white font-bold justify-center')}> loading vaults...</div>}
                 {nvaults?.map((vault) => 
                     <button key = 'overall.vaults' className='hover:scale-110 hover:bg-shadow-2xl mt-2 ml-2 border-2 border-black h-64 w-70 bg-[#33363c] hover:bg-red-500 rounded-3xl'>
                         <ul>
