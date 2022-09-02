@@ -77,7 +77,7 @@ export default function Home({ vaults }) {
                 )}
             </div> : <div> </div>}
             
-            <div className='grid grid-flow-row-dense grid-cols-5 grid-row-1 gap-2 fixed w-full top-30 h-full bg-[#15181D] overflow-auto'>
+            <div className='grid grid-flow-row-dense grid-cols-5 grid-rows-2 gap-1 fixed w-full top-30 h-full bg-[#15181D] overflow-auto'>
                 {numVaults < 1 && !loading ? (<div className = 'text-white font-bold justify-center'> There are no vaults below the collateralization ratio for the selected token, try another instead! </div>) : <div className = { (numVaults > 0 || start ? 'hidden' : 'text-white font-bold justify-center')}> loading vaults...</div>}
                 {nvaults?.map((vault) => 
                     <button key = 'overall.vaults' className='hover:scale-110 hover:bg-shadow-2xl mt-2 ml-2 border-2 border-black h-64 w-70 bg-[#33363c] hover:bg-red-500 rounded-3xl'>
