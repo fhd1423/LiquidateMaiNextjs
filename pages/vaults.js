@@ -128,7 +128,7 @@ export default function Home({ vvaults }) {
     return (
       <div className='w-full top-40 h-25  bg-gray-500'>
           <button className = 'hover:border-white ml-10 rounded-md border-2 border-black p-2 underline-offset-1' onClick={() => setViewVault(viewVault + 1)}> Select Vault Type </button>
-          {viewVault%2 == 0 ? <div className='grid grid-flow-row-dense grid-cols-3 md:grid-cols-7 sm:grid-rows-3'>
+          {viewVault%2 == 0 ? <div className='grid grid-flow-row-dense grid-cols-3 sm:grid-cols-7 sm:grid-rows-3'>
               {tokens.map((token) => <button key = 'token.names' onClick={() => handleClick(token)} className='font-bold rounded-lg p-1 m-2 text-sm uppercase border-2 border-black hover:border-white hover:text-white'>
                   {token[0]} </button>
               )}
